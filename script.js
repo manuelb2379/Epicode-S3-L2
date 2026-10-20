@@ -13,7 +13,102 @@
    8. contaPerPriorita()
 */
 
-/* 
+
+const lista = document.querySelector("#lista-task");
+const contatore = document.querySelector("#contatore");
+const aggiunta = document.querySelector(".aggiunta");
+const nuovo = document.querySelector("#nuovo-task");
+const bottone = document.querySelector("#bottone");
+
+const myTask = [
+  {
+    nome: "Pagare le bollette",
+    priorita: "alta",
+    data: new Date(),
+  },
+  {
+    nome: "Studiare JavaScript",
+    priorita: "media",
+    data: new Date(),
+  },
+  {
+    nome: "Comprare il pane",
+    priorita: "bassa",
+    data: new Date(),
+
+  },
+  {
+    nome: "Chiamare il dentista",
+    priorita: "alta",
+    data: new Date(),
+  },
+  {
+    nome: "Riposarsi",
+    priorita: "bassa",
+    data: new Date(),
+  },
+  {
+    nome: "Aperitivo",
+    priorita: "alta",
+    data: new Date(),
+  },
+  {
+    nome: "Spiegazione",
+    priorita: "media",
+    data: new Date(),
+  }
+];
+
+
+/*CORREZIONE DI DARIO
+
+FACENDO COSI MI ELIMINO L'IF PERCHÈ RIPORTO TUTTO DIRETTAMENTE
+*/
+
+
+function aggiungiTask() {
+
+  myTask.forEach((task) => {
+    const newLi = document.createElement('li');
+    newLi.classList.add(`priorita-${task.priorita}`); 
+
+    const text = document.createElement('span');
+    text.textContent = task.nome;
+    newLi.appendChild(text); 
+
+    const badge = document.createElement('span');
+    badge.classList.add('badge');
+    badge.textContent = task.priorita.toUpperCase();
+    newLi.appendChild(badge);
+
+    const taskDate = document.createElement('span');
+    taskDate.classList.add('data', 'divData');
+    taskDate.textContent = task.data.toLocaleString("it-IT") + " ";
+
+    const elimina = document.createElement('button');
+    elimina.textContent = 'Elimina';
+    
+    taskDate.appendChild(elimina);
+    newLi.appendChild(taskDate);
+
+    lista.appendChild(newLi);
+  }); // Il forEach ora racchiude tutto la creazione dell'elemento
+} 
+
+function aggiornaContatore() {
+  if (contatore) {
+    contatore.textContent = myTask.length;
+  }
+}
+
+// Chiamata iniziale per mostrare i task all'avvio della pagina
+aggiungiTask();
+aggiornaContatore()
+
+
+
+
+/*
 
 ABBOZZO DI LISTA DA SEGUIRE PER LA CREAZIONE
 
@@ -42,26 +137,22 @@ bassa: lista.querySelectorAll(".priorita-bassa").length, };
 11) Task con valori fissi 
 12)  Evidenziazione e controllo 
 
-*/ 
-const lista = document.getElementById("lista-task");
-const contatore = document.getElementById("contatore");
-const aggiunta = document.getElementById("aggiunta");
-const nuovo = document.getElementById("nuovo-task");
-const bottone = document.getElementById("bottone");
+*/
+/*
 
-function aggiungiTask (testo, priorita) {
+function aggiungiTask(testo, priorita) {
   const li = document.createElement('li');
 
   if (priorita === 'alta') {
     li.classList.add('priorita-alta')
-  }  else if (priorita === 'media') {
+  } else if (priorita === 'media') {
     li.classList.add('priorita-media')
-  }  else if (priorita === 'bassa') {
+  } else if (priorita === 'bassa') {
     li.classList.add('priorita-bassa')
   }
 
-  const idk = document.createElement('span');
-  idk.textContent = testo;
+  const text = document.createElement('span');
+  text.textContent = testo;
 
   const badge = document.createElement('span');
   badge.classList.add('badge');
@@ -80,7 +171,7 @@ function aggiungiTask (testo, priorita) {
   divData.appendChild(data);
   divData.appendChild(bottone);
 
-  li.appendChild(idk);
+  li.appendChild(text);
   li.appendChild(badge);
   li.appendChild(divData);
 
@@ -89,7 +180,7 @@ function aggiungiTask (testo, priorita) {
   contatore.textContent = lista.children.length
 }
 
-function evidenzia(indice){
+function evidenzia(indice) {
   const evidenziato = lista.children;
   if (evidenziato[indice]) evidenziato[indice].classList.add('evidenziato')
 };
@@ -109,3 +200,5 @@ aggiungiTask("Riposarsi", "media");
 
 evidenzia(2);
 console.log(contaPerPriorita());
+
+*/
