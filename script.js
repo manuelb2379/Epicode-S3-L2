@@ -13,13 +13,41 @@
    8. contaPerPriorita()
 */
 
+/* 
+
+ABBOZZO DI LISTA DA SEGUIRE PER LA CREAZIONE
+
+1)Riportare classi e id in js class= aggiunta / id = nuovo-task / bottone-aggiungi / id = lista-task / id = contatore e dargli delle const
+2) array vuoto (punto eliminato) 
+3) create element (“li”)
+4) if con priorità === alta
+li.classList.add (“priorità-alta”)
+E COSI VIA PER GLI ALTRI 2
+
+5)const per createElement (“span”) -> per il testo
+6)const per createElement (“span”) -> per il .add(“badge”)->contenuto del badge alto medio o basso
+7)const per createElement (“div data”)-> add(“div data”)
+-span per la data con add (“data ”) ->contenuto new date .toLocaleString(“it-IT”)
+- const per createElement (“button”) -> content elimina
+
+8)li.appendchild nome badge e div data
+Divdata.appendchild data e bottone
+Lista-task.appendchild li
+9)Contatore.text content = lista-task.length
+10) funzione contaPerPriorita(){
+alta: lista.querySelectorAll(".priorita-alta").length, 
+media: lista.querySelectorAll(".priorita-media").length, 
+bassa: lista.querySelectorAll(".priorita-bassa").length, };
+}
+11) Task con valori fissi 
+12)  Evidenziazione e controllo 
+
+*/ 
 const lista = document.getElementById("lista-task");
 const contatore = document.getElementById("contatore");
 const aggiunta = document.getElementById("aggiunta");
 const nuovo = document.getElementById("nuovo-task");
 const bottone = document.getElementById("bottone");
-
-const tasks = [];
 
 function aggiungiTask (testo, priorita) {
   const li = document.createElement('li');
@@ -63,7 +91,7 @@ function aggiungiTask (testo, priorita) {
 
 function evidenzia(indice){
   const evidenziato = lista.children;
-  if (evidenziato[indice]) evidenziato[indice].classList.add('glow')
+  if (evidenziato[indice]) evidenziato[indice].classList.add('evidenziato')
 };
 
 function contaPerPriorita() {
@@ -74,11 +102,10 @@ function contaPerPriorita() {
   };
 }
 
-aggiungiTask("Pagare le bollette", "alta");
-aggiungiTask("Studiare JavaScript", "media");
+aggiungiTask("Fare la spesa", "alta");
+aggiungiTask("Studiare JavaScript", "alta");
 aggiungiTask("Comprare il pane", "bassa");
-aggiungiTask("Chiamare il dentista", "alta");
-aggiungiTask("Riposarsi", "bassa");
+aggiungiTask("Riposarsi", "media");
 
-evidenzia(1);
+evidenzia(2);
 console.log(contaPerPriorita());

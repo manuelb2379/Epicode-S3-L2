@@ -93,3 +93,10 @@ li button {
 	padding: 4px;
 	margin-left: 5px;
 }
+
+/*hover sui button*/
+
+li button:hover{
+	background-color: black;
+	color: white;
+}
