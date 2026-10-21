@@ -59,6 +59,13 @@ const myTask = [
   }
 ];
 
+
+/*CORREZIONE DI DARIO
+
+FACENDO COSI MI ELIMINO L'IF PERCHÈ RIPORTO TUTTO DIRETTAMENTE
+*/
+
+
 function aggiungiTask() {
 
   myTask.forEach((task) => {
